@@ -1,0 +1,44 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+use Rad\SymfonyDocsMateExtension\Command\SymfonyDocsSyncCommand;
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\Console\Application;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+
+require dirname(__DIR__).'/vendor/autoload.php';
+
+$projectRoot = getcwd();
+if (false === $projectRoot) {
+    fwrite(STDERR, "Unable to determine the current working directory.\n");
+
+    exit(1);
+}
+
+$container = new ContainerBuilder();
+$container->setParameter('mate.root_dir', $projectRoot);
+
+$loader = new PhpFileLoader($container, new FileLocator(dirname(__DIR__).'/config'));
+$loader->load('config.php');
+
+$projectConfig = $projectRoot.'/mate/config.php';
+if (is_file($projectConfig)) {
+    $projectLoader = new PhpFileLoader($container, new FileLocator(dirname($projectConfig)));
+    $projectLoader->load(basename($projectConfig));
+}
+
+$container->compile(true);
+
+$application = new Application('Symfony Docs Mate Sync');
+$command = $container->get(SymfonyDocsSyncCommand::class);
+if (method_exists($application, 'addCommand')) {
+    $application->addCommand($command);
+} else {
+    $application->add($command);
+}
+
+$application->setDefaultCommand('symfony-docs-mate:sync', true);
+$application->run();

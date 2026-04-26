@@ -1,0 +1,55 @@
+{
+    "name": "rad/symfony-docs-mate-extension",
+    "description": "Symfony AI Mate extension for efficient lookup in Symfony documentation on Symfony 8+",
+    "type": "symfony-ai-mate",
+    "license": "MIT",
+    "keywords": ["symfony", "ai", "mate", "mcp", "documentation"],
+    "homepage": "https://github.com/Radprosium/symfony-docs-mate-extension",
+    "authors": [
+        {
+            "name": "Radprosium"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/Radprosium/symfony-docs-mate-extension/issues",
+        "source": "https://github.com/Radprosium/symfony-docs-mate-extension"
+    },
+    "require": {
+        "php": ">=8.4",
+        "symfony/ai-mate": "^0.8",
+        "symfony/process": "^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rad\\SymfonyDocsMateExtension\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rad\\SymfonyDocsMateExtension\\Tests\\": "tests/"
+        }
+    },
+    "bin": [
+        "bin/symfony-docs-mate-sync"
+    ],
+    "extra": {
+        "ai-mate": {
+            "scan-dirs": [
+                "src/Capability"
+            ],
+            "includes": [
+                "config/config.php"
+            ],
+            "instructions": "INSTRUCTIONS.md"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
