@@ -1,5 +1,5 @@
 {
-    "name": "rad/symfony-docs-mate-extension",
+    "name": "radprosium/symfony-docs-mate-extension",
     "description": "Symfony AI Mate extension for efficient lookup in Symfony documentation on Symfony 8+",
     "type": "symfony-ai-mate",
     "license": "MIT",

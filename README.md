@@ -48,7 +48,7 @@ composer config repositories.symfony-docs-mate-extension '{
   "options": { "symlink": true }
 }'
 
-composer require --dev rad/symfony-docs-mate-extension:*
+composer require --dev radprosium/symfony-docs-mate-extension:*
 ```
 
 ### Install It from a Package Registry Instead of a Path Repository
@@ -57,7 +57,7 @@ If this extension is published to a package registry, use the normal Composer
 flow instead:
 
 ```bash
-composer require --dev rad/symfony-docs-mate-extension
+composer require --dev radprosium/symfony-docs-mate-extension
 ```
 
 ### 2. Initialize Mate if Needed
@@ -132,7 +132,7 @@ change its binary metadata, refresh that package once so `vendor/bin/` is
 rebuilt:
 
 ```bash
-composer update rad/symfony-docs-mate-extension
+composer update radprosium/symfony-docs-mate-extension
 ```
 
 ## Containerized Mate Setup
@@ -179,8 +179,8 @@ vendor/bin/mate discover
 
 ```bash
 vendor/bin/mate debug:extensions --show-all
-vendor/bin/mate debug:capabilities --extension=rad/symfony-docs-mate-extension
-vendor/bin/mate mcp:tools:list --extension=rad/symfony-docs-mate-extension
+vendor/bin/mate debug:capabilities --extension=radprosium/symfony-docs-mate-extension
+vendor/bin/mate mcp:tools:list --extension=radprosium/symfony-docs-mate-extension
 ```
 
 ### 6. Call the Tools Directly
@@ -199,7 +199,7 @@ vendor/bin/mate mcp:tools:call symfony-docs-section '{"locator":"service_contain
 - `vendor/bin/symfony-docs-mate-sync` lets you prefetch or refresh the
   managed snapshot explicitly.
 - If this package is installed from a local path repository, run
-  `composer update rad/symfony-docs-mate-extension` after local package metadata
+  `composer update radprosium/symfony-docs-mate-extension` after local package metadata
   changes so Composer refreshes `vendor/bin/`.
 - In containerized setups, only set `symfony_docs_mate.docs_root` if that exact
   path exists inside the container.
