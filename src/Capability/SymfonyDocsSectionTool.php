@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Rad\SymfonyDocsMateExtension\Capability;
 
-use Mcp\Capability\Attribute\McpTool;
+use Symfony\AI\Mate\Attribute\MateTool;
 use Rad\SymfonyDocsMateExtension\Service\DocsRepository;
 use Symfony\AI\Mate\Encoding\ResponseEncoder;
 
@@ -21,7 +21,7 @@ final class SymfonyDocsSectionTool
      * @param int|null $maxChars Hard limit for excerpt characters
      * @param bool     $includeHeading Include the section heading in the excerpt
      */
-    #[McpTool('symfony-docs-section', 'Read a bounded excerpt from the Symfony docs. Use this once you already know the relevant page or section so you only fetch the lines that matter.')]
+    #[MateTool(name: 'symfony-docs-section', title: 'Symfony Docs Section', description: 'Read a bounded excerpt from the Symfony docs. Use this once you already know the relevant page or section so you only fetch the lines that matter.')]
     public function section(
         string $locator,
         ?int $maxLines = null,

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Rad\SymfonyDocsMateExtension\Capability;
 
-use Mcp\Capability\Attribute\McpTool;
+use Symfony\AI\Mate\Attribute\MateTool;
 use Rad\SymfonyDocsMateExtension\Service\DocsRepository;
 use Symfony\AI\Mate\Encoding\ResponseEncoder;
 
@@ -22,7 +22,7 @@ final class SymfonyDocsPageTool
      * @param bool   $includeChildren Include toctree child pages in the response
      * @param int    $summaryLines Maximum number of summary lines to return
      */
-    #[McpTool('symfony-docs-page', 'Inspect a Symfony docs page without dumping the full file. Use this to see page metadata, headings, labels, and child pages before reading a section excerpt.')]
+    #[MateTool(name: 'symfony-docs-page', title: 'Symfony Docs Page', description: 'Inspect a Symfony docs page without dumping the full file. Use this to see page metadata, headings, labels, and child pages before reading a section excerpt.')]
     public function page(
         string $locator,
         bool $includeHeadings = true,

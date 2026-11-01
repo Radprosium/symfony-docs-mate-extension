@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Rad\SymfonyDocsMateExtension\Tests\Capability;
 
-use Mcp\Capability\Discovery\DocBlockParser;
-use Mcp\Capability\Discovery\SchemaGenerator;
+use Symfony\AI\Mate\Discovery\DocBlockParser;
+use Symfony\AI\Mate\Discovery\SchemaGenerator;
 use PHPUnit\Framework\TestCase;
 use Rad\SymfonyDocsMateExtension\Capability\SymfonyDocsCatalogResource;
 use Rad\SymfonyDocsMateExtension\Capability\SymfonyDocsSearchTool;

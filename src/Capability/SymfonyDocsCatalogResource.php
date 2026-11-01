@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Rad\SymfonyDocsMateExtension\Capability;
 
-use Mcp\Capability\Attribute\McpResource;
+use Symfony\AI\Mate\Attribute\MateResource;
 use Rad\SymfonyDocsMateExtension\Service\DocsRepository;
 use Symfony\AI\Mate\Encoding\ResponseEncoder;
 
@@ -18,7 +18,7 @@ final class SymfonyDocsCatalogResource
     /**
      * @return array{uri: string, mimeType: string, text: string}
      */
-    #[McpResource(uri: 'symfony-docs://catalog', name: 'symfony_docs_catalog', mimeType: 'text/plain')]
+    #[MateResource(uri: 'symfony-docs://catalog', name: 'symfony_docs_catalog', title: 'Symfony Docs Catalog', description: 'Browse the top-level Symfony documentation catalog structure', mimeType: 'text/plain')]
     public function catalog(): array
     {
         return [

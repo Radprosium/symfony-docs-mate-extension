@@ -9,7 +9,23 @@ use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 
-require dirname(__DIR__).'/vendor/autoload.php';
+$autoloadFiles = [
+    dirname(__DIR__).'/vendor/autoload.php',
+    dirname(__DIR__, 4).'/vendor/autoload.php',
+    dirname(__DIR__, 3).'/autoload.php',
+];
+$autoloadLoaded = false;
+foreach ($autoloadFiles as $autoloadFile) {
+    if (file_exists($autoloadFile)) {
+        require $autoloadFile;
+        $autoloadLoaded = true;
+        break;
+    }
+}
+if (!$autoloadLoaded) {
+    fwrite(STDERR, "Unable to locate Composer autoloader.\n");
+    exit(1);
+}
 
 $projectRoot = getcwd();
 if (false === $projectRoot) {
